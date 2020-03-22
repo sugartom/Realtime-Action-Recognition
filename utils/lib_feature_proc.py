@@ -92,8 +92,9 @@ def extract_multi_frame_features(
 
         # Print
         if is_print and i % 1000 == 0:
-            print(f"{i}/{N}", end=", ")
-            
+            # print(f"{i}/{N}", end=", ")
+            print("%d/%d" % (i, N))
+
     if is_print:
         print("")
     X_new = np.array(X_new)

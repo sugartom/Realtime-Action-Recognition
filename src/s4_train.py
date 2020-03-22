@@ -71,10 +71,10 @@ def evaluate_model(model, classes, tr_X, tr_Y, te_X, te_Y):
     t0 = time.time()
 
     tr_accu, tr_Y_predict = model.predict_and_evaluate(tr_X, tr_Y)
-    print(f"Accuracy on training set is {tr_accu}")
+    print("Accuracy on training set is %s" % tr_accu)
 
     te_accu, te_Y_predict = model.predict_and_evaluate(te_X, te_Y)
-    print(f"Accuracy on testing set is {te_accu}")
+    print("Accuracy on testing set is %s" % te_accu)
 
     print("Accuracy report:")
     print(classification_report(

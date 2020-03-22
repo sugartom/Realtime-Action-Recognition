@@ -17,7 +17,8 @@ import sys, os, time, argparse, logging
 import cv2
 
 # openpose packages
-sys.path.append(ROOT + "src/githubs/tf-pose-estimation")
+# sys.path.append(ROOT + "src/githubs/tf-pose-estimation")
+sys.path.append("/home/yitao/Documents/fun-project/tensorflow-related/tf-pose-estimation")
 from tf_pose.networks import get_graph_path, model_wh
 from tf_pose.estimator import TfPoseEstimator
 from tf_pose import common
@@ -180,7 +181,7 @@ def test_openpose_on_webcamera():
         img = webcam_reader.read_image()
         if img is None:
             break
-        print(f"Read {i}th image...")
+        print("Read %dth image..." % i)
 
         # Detect
         humans = skeleton_detector.detect(img)

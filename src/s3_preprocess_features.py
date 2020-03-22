@@ -81,13 +81,15 @@ def main():
     # Process features
     print("\nExtracting time-serials features ...")
     X, Y = process_features(X0, Y0, video_indices, CLASSES)
-    print(f"X.shape = {X.shape}, len(Y) = {len(Y)}")
+    print("X.shape = %s, len(Y) = %d" % (X.shape, len(Y)))
 
     # Save data
     print("\nWriting features and labesl to disk ...")
 
-    os.makedirs(os.path.dirname(DST_PROCESSED_FEATURES), exist_ok=True)
-    os.makedirs(os.path.dirname(DST_PROCESSED_FEATURES_LABELS), exist_ok=True)
+    if not os.path.exists(os.path.dirname(DST_PROCESSED_FEATURES)):
+        os.makedirs(os.path.dirname(DST_PROCESSED_FEATURES))
+    if not os.path.exists(os.path.dirname(DST_PROCESSED_FEATURES_LABELS)):
+        os.makedirs(os.path.dirname(DST_PROCESSED_FEATURES_LABELS))
 
     np.savetxt(DST_PROCESSED_FEATURES, X, fmt="%.5f")
     print("Save features to: " + DST_PROCESSED_FEATURES)

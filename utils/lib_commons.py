@@ -21,7 +21,8 @@ def int2str(num, idx_len):
 def save_listlist(filepath, ll):
     ''' Save a list of lists to file '''
     folder_path = os.path.dirname(filepath)
-    os.makedirs(folder_path, exist_ok=True)
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
     with open(filepath, 'w') as f:
         simplejson.dump(ll, f)
 

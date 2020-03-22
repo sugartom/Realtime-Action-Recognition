@@ -82,7 +82,7 @@ def get_length_of_one_skeleton_data(filepaths):
             data_size = len(skeleton)
             assert(data_size == 41)
             return data_size
-    raise RuntimeError(f"No valid txt under: {SRC_DETECTED_SKELETONS_FOLDER}.")
+    raise RuntimeError("No valid txt under: %s." % SRC_DETECTED_SKELETONS_FOLDER)
 
 
 # -- Main
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     # -- Check data length of one skeleton
     data_length = get_length_of_one_skeleton_data(filepaths)
-    print("Data length of one skeleton is {data_length}")
+    print("Data length of one skeleton is %s" % data_length)
 
     # -- Read in skeletons and push to all_skeletons
     all_skeletons = []
@@ -124,8 +124,8 @@ if __name__ == "__main__":
     with open(DST_ALL_SKELETONS_TXT, 'w') as f:
         simplejson.dump(all_skeletons, f)
 
-    print(f"There are {len(all_skeletons)} skeleton data.")
-    print(f"They are saved to {DST_ALL_SKELETONS_TXT}")
+    print("There are %d skeleton data." % len(all_skeletons))
+    print("They are saved to %s" % DST_ALL_SKELETONS_TXT)
     print("Number of each action: ")
     for label in CLASSES:
-        print(f"    {label}: {labels_cnt[label]}")
+        print("    %s: %s" % (label, labels_cnt[label]))

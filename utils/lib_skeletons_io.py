@@ -125,13 +125,17 @@ class ReadValidImagesAndActionTypesByTxt(object):
         self.imgs_path = img_folder
         self.i = 0
         self.num_images = len(self.images_info)
-        print(f"Reading images from txtscript: {img_folder}")
-        print(f"Reading images information from: {valid_imgs_txt}")
-        print(f"    Num images = {self.num_images}\n")
+        # print(f"Reading images from txtscript: {img_folder}")
+        # print(f"Reading images information from: {valid_imgs_txt}")
+        # print(f"    Num images = {self.num_images}\n")
+        print("Reading images from txtscript: %s" % (img_folder))
+        print("Reading images information from: %s" % (valid_imgs_txt))
+        print("    Num images = %d\n" % (self.num_images))
 
     def save_images_info(self, filepath):
         folder_path = os.path.dirname(filepath)
-        os.makedirs(folder_path, exist_ok=True)
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
         with open(filepath, 'w') as f:
             simplejson.dump(self.images_info, f)
 
@@ -149,8 +153,7 @@ class ReadValidImagesAndActionTypesByTxt(object):
         '''
         self.i += 1
         if self.i > len(self.images_info):
-            raise RuntimeError(f"There are only {len(self.images_info)} images, "
-                               f"but you try to read the {self.i}th image")
+            raise RuntimeError("There are only %d images, but you try to read the %dth image" % (len(self.images_info), self.i))
         filepath = self.get_filename(self.i)
         img = self.imread(self.i)
         if img is None:
@@ -235,10 +238,10 @@ def load_skeleton_data(filepath, classes):
         N = len(Y)
         P = len(X[0])
         C = len(classes)
-        print(f"\nNumber of samples = {N} \n"
-              f"Raw feature length = {P} \n"
-              f"Number of classes = {C}")
-        print(f"Classes: {classes}")
+        print("\nNumber of samples = %d \n" % N)
+        print("Raw feature length = %d \n" % P)
+        print("Number of classes = %d" % C)
+        print("Classes: %s" % classes)
 
         return X, Y, video_indices
 

@@ -32,3 +32,6 @@ tmp*
 **/.vscode/*
 **/__pycache__/*
 **/.ipynb_checkpoints/*
+
+data_proc/*
+output/*

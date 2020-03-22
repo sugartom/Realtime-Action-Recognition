@@ -242,7 +242,7 @@ def test_ReadFromWebcam():
         img = webcam_reader.read_image()
         if img is None:
             break
-        print(f"Read {i}th image...")
+        print("Read %dth image..." % i)
         img_displayer.display(img)
     print("Program ends")
 

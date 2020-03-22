@@ -325,8 +325,12 @@ if __name__ == "__main__":
     # -- Init output
 
     # output folder
-    os.makedirs(DST_FOLDER, exist_ok=True)
-    os.makedirs(DST_FOLDER + DST_SKELETON_FOLDER_NAME, exist_ok=True)
+    # os.makedirs(DST_FOLDER, exist_ok=True)
+    # os.makedirs(DST_FOLDER + DST_SKELETON_FOLDER_NAME, exist_ok=True)
+    if not os.path.exists(DST_FOLDER): 
+        os.makedirs(DST_FOLDER)
+    if not os.path.exists(DST_FOLDER + DST_SKELETON_FOLDER_NAME):
+        os.makedirs(DST_FOLDER + DST_SKELETON_FOLDER_NAME)
 
     # video writer
     video_writer = lib_images_io.VideoWriter(
@@ -341,7 +345,7 @@ if __name__ == "__main__":
             img = images_loader.read_image()
             ith_img += 1
             img_disp = img.copy()
-            print(f"\nProcessing {ith_img}th image ...")
+            print("\nProcessing %dth image ..." % ith_img)
 
             # -- Detect skeletons
             humans = skeleton_detector.detect(img)

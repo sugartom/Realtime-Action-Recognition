@@ -119,9 +119,12 @@ if __name__ == "__main__":
     img_displayer = ImageDisplayer()
 
     # -- Init output path
-    os.makedirs(os.path.dirname(DST_IMAGES_INFO_TXT), exist_ok=True)
-    os.makedirs(DST_DETECTED_SKELETONS_FOLDER, exist_ok=True)
-    os.makedirs(DST_VIZ_IMGS_FOLDER, exist_ok=True)
+    if not os.path.exists(os.path.dirname(DST_IMAGES_INFO_TXT)):
+        os.makedirs(os.path.dirname(DST_IMAGES_INFO_TXT))
+    if not os.path.exists(DST_DETECTED_SKELETONS_FOLDER):
+        os.makedirs(DST_DETECTED_SKELETONS_FOLDER)
+    if not os.path.exists(DST_VIZ_IMGS_FOLDER):
+        os.makedirs(DST_VIZ_IMGS_FOLDER)
 
     # -- Read images and process
     num_total_images = images_loader.num_images
@@ -159,7 +162,8 @@ if __name__ == "__main__":
             DST_VIZ_IMGS_FOLDER + filename,
             img_disp)
 
-        print(f"{ith_img}/{num_total_images} th image "
-              f"has {len(skeletons)} people in it")
+        # print(f"{ith_img}/{num_total_images} th image "
+        #       f"has {len(skeletons)} people in it")
+        print("%d/%d th image has %d people in it" % (ith_img, num_total_images, len(skeletons)))
 
     print("Program ends")

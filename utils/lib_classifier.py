@@ -132,6 +132,7 @@ class ClassifierOnlineTest(object):
         # -- Settings
         self.human_id = human_id
         with open(model_path, 'rb') as f:
+            print("[Yitao] model_path = %s" % model_path)
             self.model = pickle.load(f)
         if self.model is None:
             print("my Error: failed to load model")
