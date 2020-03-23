@@ -388,7 +388,7 @@ if __name__ == "__main__":
                 SKELETON_FILENAME_FORMAT.format(ith_img),
                 skels_to_save)
 
-            if (ith_img > 30):
+            if (ith_img > 10):
                 break
     finally:
         video_writer.stop()

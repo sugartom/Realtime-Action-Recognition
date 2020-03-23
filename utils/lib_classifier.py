@@ -185,7 +185,7 @@ class ClassifierOnlineTest(object):
             for score in self.scores_hist:
                 score_sums += score
             score_sums /= len(self.scores_hist)
-            print("\nMean score:\n", score_sums)
+            # print("\nMean score:\n", score_sums)
             return score_sums
 
         else:  # Use multiply

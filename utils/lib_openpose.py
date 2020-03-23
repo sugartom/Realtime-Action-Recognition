@@ -115,7 +115,7 @@ class SkeletonDetector(object):
 
         # Do inference
         humans = self._tf_pose_estimator.inference(
-            image, resize_to_default=(self._w > 0 and self._h > 0),
+            image, resize_to_default=False,
             upsample_size=self._resize_out_ratio)
 
         # Print result and time cost
