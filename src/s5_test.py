@@ -352,14 +352,20 @@ if __name__ == "__main__":
             skeletons, scale_h = skeleton_detector.humans_to_skels_list(humans)
             skeletons = remove_skeletons_with_few_joints(skeletons)
 
+            print("[Yitao] len(skeletons) = %s" % len(skeletons[0]))
+            # print(skeletons)
+
             # -- Track people
             dict_id2skeleton = multiperson_tracker.track(
                 skeletons)  # int id -> np.array() skeleton
+
+            print(dict_id2skeleton)
 
             # -- Recognize action of each person
             if len(dict_id2skeleton):
                 dict_id2label = multiperson_classifier.classify(
                     dict_id2skeleton)
+                print(dict_id2label)
 
             # -- Draw
             img_disp = draw_result_img(img_disp, ith_img, humans, dict_id2skeleton,
@@ -381,6 +387,9 @@ if __name__ == "__main__":
                 DST_FOLDER + DST_SKELETON_FOLDER_NAME +
                 SKELETON_FILENAME_FORMAT.format(ith_img),
                 skels_to_save)
+
+            if (ith_img > 30):
+                break
     finally:
         video_writer.stop()
         print("Program ends")
